@@ -64,19 +64,16 @@
       </div>
     </nav>
 
-    <section class="jumbotron text-center">
-      <!-- Foto profil -->
+    <section class="jumbotron text-center reveal-item">
       <img
         src="img/salsa.jpeg"
-        alt="Salsabila02."
-        class="img-thumbnail profile-img"
+        class="img-thumbnail profile-img reveal-up"
+        alt="profile"
       />
 
-      <!-- Nama besar -->
-      <h1 class="display-4">Salsabila Sabrina</h1>
+      <h1 class="display-4 reveal-up">Salsabila Sabrina</h1>
 
-      <!-- Subtitle jabatan -->
-      <p class="lead">
+      <p class="lead reveal-up">
         <span id="typing"></span>
       </p>
 
@@ -90,11 +87,7 @@
         </a>
 
         <a href="#">
-          <i class="bi bi-pinterest"></i>
-        </a>
-
-        <a href="#">
-          <i class="bi bi-github"></i>
+          <i class="bi bi-telegram"></i>
         </a>
       </div>
 
@@ -108,7 +101,7 @@
       </svg>
     </section>
 
-    <section id="about">
+    <section id="about" class="reveal-item">
       <div class="container">
         <!-- Judul -->
         <div class="row text-center mb-5">
@@ -155,7 +148,7 @@
     </section>
 
     <!-- Projects -->
-    <section id="project">
+    <section id="project" class="reveal-item">
       <div class="container">
         <!-- Judul -->
         <div class="row text-center mb-5">
@@ -237,7 +230,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact">
+    <section id="contact" class="reveal-item">
       <div class="container">
         <div class="row text-center mb-4">
           <div class="col">
@@ -288,7 +281,7 @@
       </div>
     </section>
 
-    <footer class="footer-simple">
+    <footer class="footer-simple reveal-item">
       <div class="container text-center">
         <h4 class="footer-title">Salsabila Sabrina</h4>
 
@@ -347,13 +340,17 @@
     </script>
 
     <script>
-      const elements = document.querySelectorAll(".reveal");
+      const items = document.querySelectorAll(".reveal-item");
 
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add("active");
+              const index = Array.from(items).indexOf(entry.target);
+
+              setTimeout(() => {
+                entry.target.classList.add("active");
+              }, index * 200); // urutan satu-satu
             }
           });
         },
@@ -362,7 +359,7 @@
         },
       );
 
-      elements.forEach((el) => observer.observe(el));
+      items.forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>

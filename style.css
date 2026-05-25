@@ -333,3 +333,14 @@ svg {
   padding-top: 15px;
   margin: 0;
 }
+
+.reveal-item {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.reveal-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
