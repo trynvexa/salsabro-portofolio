@@ -342,15 +342,20 @@
     <script>
       const items = document.querySelectorAll(".reveal-item");
 
+      let delay = 0;
+
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const index = Array.from(items).indexOf(entry.target);
-
+            if (
+              entry.isIntersecting &&
+              !entry.target.classList.contains("active")
+            ) {
               setTimeout(() => {
                 entry.target.classList.add("active");
-              }, index * 200); // urutan satu-satu
+              }, delay);
+
+              delay += 250; // ini bikin urutan global satu-satu
             }
           });
         },
